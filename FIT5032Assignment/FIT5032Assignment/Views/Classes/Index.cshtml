@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Offline Basketball Class</h2>
-<h5>A chance to be better</h5>
+<h2>Class</h2>
+<h5>A Chance to be better</h5>
 @if (User.IsInRole("Admin"))
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New Class", "Create")
     </p>
 }
 <table class="table">
@@ -20,24 +20,23 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.descriprion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model.Date.Year)-@Html.DisplayNameFor(model => model.Date.Month)-@Html.DisplayNameFor(model => model.Date.Day)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Time)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Coach)
+                @Html.DisplayNameFor(model => model.Cost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cost)
+                @Html.DisplayNameFor(model => model.Location)
             </th>
             <th></th>
         </tr>
     </thead>
-
     <tbody>
         @foreach (var item in Model)
         {
@@ -46,36 +45,36 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.descriprion)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date.Year)-@Html.DisplayFor(modelItem => item.Date.Month)-@Html.DisplayFor(modelItem => item.Date.Day)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Time)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Coach)
+                    @Html.DisplayFor(modelItem => item.Cost)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Cost)
+                    @Html.DisplayFor(modelItem => item.Location)
                 </td>
                 @if (User.IsInRole("Admin"))
                 {
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) | @Html.ActionLink("Apply", "Apply", "Classes")
+            </td>
                 }
-                @if (User.IsInRole("Normal"))
+                else
                 {
                     <td>
-                        @Html.ActionLink("View Details", "Details", new { id = item.Id }) | apply
-
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) | @Html.ActionLink("Apply","Apply","Classes")
                     </td>
-
                 }
+
             </tr>
         }
     </tbody>
@@ -90,4 +89,5 @@ $('.table').DataTable();
 });
     </script>
 }
-<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
+      rel="stylesheet" />

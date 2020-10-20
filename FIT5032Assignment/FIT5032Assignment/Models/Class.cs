@@ -14,17 +14,16 @@ namespace FIT5032Assignment.Models
         public string Name { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        public string descriprion { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime Date { get; set; }
 
         public TimeSpan Time { get; set; }
 
-        [Required]
-        public string Coach { get; set; }
+        public int Cost { get; set; }
 
         [Required]
-        public string Cost { get; set; }
+        public string Location { get; set; }
     }
 }

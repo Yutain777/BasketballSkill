@@ -14,9 +14,11 @@ namespace FIT5032Assignment.Models
         public string Name { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        public string Detail { get; set; }
 
-        [Required]
         public string Link { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime UpdateTime { get; set; }
     }
 }
