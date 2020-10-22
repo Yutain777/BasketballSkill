@@ -33,5 +33,7 @@ namespace FIT5032Assignment.Controllers
             ViewBag.Message = "Class page";
             return View();
         }
+
+       
     }
 }

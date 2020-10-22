@@ -20,6 +20,12 @@ namespace FIT5032Assignment.Controllers
             return View(db.Classes.ToList());
         }
 
+        public ActionResult Apply()
+        {
+            ViewBag.Message = "Apply";
+            return View();
+        }
+
         // GET: Classes/Details/5
         public ActionResult Details(int? id)
         {
@@ -46,7 +52,7 @@ namespace FIT5032Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Date,Time,Coach,Cost")] Class @class)
+        public ActionResult Create([Bind(Include = "Id,Name,descriprion,Date,Time,Cost,Location")] Class @class)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +84,7 @@ namespace FIT5032Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Date,Time,Coach,Cost")] Class @class)
+        public ActionResult Edit([Bind(Include = "Id,Name,descriprion,Date,Time,Cost,Location")] Class @class)
         {
             if (ModelState.IsValid)
             {
@@ -124,4 +130,6 @@ namespace FIT5032Assignment.Controllers
             base.Dispose(disposing);
         }
     }
+
+   
 }

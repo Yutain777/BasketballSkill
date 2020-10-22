@@ -5,8 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<<<<<<< HEAD
 <h5>Basketball Rules</h5>
 <h3>Know about more about Basketball</h3>
+=======
+<h2>Rule</h2>
+<h5>Learn more about basketball</h5>
+>>>>>>> f9dcc4419a650cca916d62e4dfcee7b84a096a03
 @if (User.IsInRole("Admin"))
 {
     <p>
@@ -25,40 +30,47 @@
             <th>
                 @Html.DisplayNameFor(model => model.Link)
             </th>
+<<<<<<< HEAD
+=======
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateTime)
+            </th>
+            <th></th>
+>>>>>>> f9dcc4419a650cca916d62e4dfcee7b84a096a03
         </tr>
     </thead>
     <tbody>
 
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateTime)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
+            }
+            else
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.Detail)
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) 
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Link)
-                </td>
-                @if (User.IsInRole("Admin"))
-                {
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                }
-                @if (User.IsInRole("Normal"))
-                {
-                    <td>
-                        @Html.ActionLink("View Details", "Details", new { id = item.Id }) |
-
-                    </td>
-
-                }
-
-            </tr>
+            }
+        </tr>
         }
     </tbody>
 </table>
@@ -71,4 +83,5 @@ $('.table').DataTable();
 });
     </script>
 }
-<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
+      rel="stylesheet" />
