@@ -8,10 +8,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Class</h4>
         <hr />
@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "create-name", @maxlength = "30", @onkeyup = "value=value.replace(/[\\W]/g,'')", @onbeforepaste = "clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\d]/g,''))" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @id = "create-date", @type = "text" } })
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -78,4 +78,13 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+    @Scripts.Render("~/Scripts/laydate/laydate.js")
+    <script>
+        var myDate = new Date();
+        laydate.render({
+            elem: '#create-date',
+            lang: 'en',
+            min: myDate.toLocaleString()
+        });
+    </script>
+} 
