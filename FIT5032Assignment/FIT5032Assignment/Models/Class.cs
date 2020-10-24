@@ -25,5 +25,7 @@ namespace FIT5032Assignment.Models
 
         [Required]
         public string Location { get; set; }
+
+        public int state { get; set; }
     }
 }

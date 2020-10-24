@@ -20,8 +20,9 @@ namespace FIT5032Assignment.Controllers
             return View(db.Classes.ToList());
         }
 
-        public ActionResult Apply()
+        public ActionResult Apply(int? id)
         {
+            ViewData["id"] = id;
             ViewBag.Message = "Apply";
             return View();
         }
@@ -84,8 +85,9 @@ namespace FIT5032Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,descriprion,Date,Time,Cost,Location")] Class @class)
+        public ActionResult Edit([Bind(Include = "Id,Name,descriprion,Date,Time,Cost,Location,state")] Class @class)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Entry(@class).State = EntityState.Modified;

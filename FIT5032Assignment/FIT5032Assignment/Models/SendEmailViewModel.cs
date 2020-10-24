@@ -19,5 +19,6 @@ namespace FIT5032Assignment.Models
         [Required(ErrorMessage = "Please enter the contents")]
         public string Contents { get; set; }
 
+        public int id { get; set; }
     }
 }
