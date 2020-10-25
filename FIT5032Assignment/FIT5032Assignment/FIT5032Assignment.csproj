@@ -523,7 +523,7 @@
     <Content Include="Views\Rules\Details.cshtml" />
     <Content Include="Views\Rules\Edit.cshtml" />
     <Content Include="Views\Rules\Index.cshtml" />
-    <Content Include="Views\Classes\Apply.cshtml" />
+    <Content Include="Views\Home\Apply.cshtml" />
     <Content Include="Views\Locations\Create.cshtml" />
     <Content Include="Views\Locations\Delete.cshtml" />
     <Content Include="Views\Locations\Details.cshtml" />
@@ -532,6 +532,7 @@
     <Content Include="Scripts\laydate\theme\default\font\iconfont.eot" />
     <Content Include="Scripts\laydate\theme\default\font\iconfont.ttf" />
     <Content Include="Scripts\laydate\theme\default\font\iconfont.woff" />
+    <Content Include="Views\Shared\DisplayTemplates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

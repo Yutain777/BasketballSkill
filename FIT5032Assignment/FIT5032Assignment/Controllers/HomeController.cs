@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FIT5032Assignment.Models;
+
 
 namespace FIT5032Assignment.Controllers
 {
@@ -34,6 +36,43 @@ namespace FIT5032Assignment.Controllers
             return View();
         }
 
-       
-    }
+        public ActionResult Apply()
+        {
+            ViewBag.Message = "Apply page";
+            return View(new SendEmailViewModel());
+        }
+        [HttpPost]
+        public ActionResult Apply(SendEmailViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    String toEmail = "zhanchenchang@163.com";
+                    String subject = model.Subject;
+                    String contents = model.Contents;
+
+
+                    EmailSender es = new EmailSender();
+                    es.Send(toEmail, subject, contents);
+
+                    ViewBag.Result = "Email has been send.";
+
+                    ModelState.Clear();
+
+                    return View(new SendEmailViewModel());
+                }
+                catch
+                {
+                    return View();
+                }
+
+            }
+            return View();
+        }
+
+
+
+
+        }
 }

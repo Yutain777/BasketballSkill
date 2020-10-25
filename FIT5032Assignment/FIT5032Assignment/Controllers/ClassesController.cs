@@ -43,6 +43,7 @@ namespace FIT5032Assignment.Controllers
         }
 
         // GET: Classes/Create
+        [ValidateInput(false)]
         public ActionResult Create()
         {
             return View();
