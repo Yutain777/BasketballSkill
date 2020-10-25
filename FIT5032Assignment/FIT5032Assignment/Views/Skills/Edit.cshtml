@@ -11,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Skill</h4>
         <hr />
@@ -45,7 +45,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.UpdateTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UpdateTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.UpdateTime, new { htmlAttributes = new { @class = "form-control", @id = "edit-date", @type = "text" } })
                 @Html.ValidationMessageFor(model => model.UpdateTime, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -64,4 +64,13 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/laydate/laydate.js")
+    <script>
+        var myDate = new Date();
+        laydate.render({
+            elem: '#edit-date',
+            lang: 'en',
+            min: myDate.toLocaleString()
+        });
+    </script>
 }
